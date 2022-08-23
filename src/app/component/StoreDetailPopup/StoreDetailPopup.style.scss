@@ -1,0 +1,96 @@
+.buttonsSec{
+    margin-bottom: 13px;
+    // text-align: center;
+    margin-top: 15px;
+    @include mobile{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.StoreDetailPopup .Popup-Content{
+    overflow-y: hidden;
+}
+
+.popupTitle{
+    font-weight: 500;
+    color: #979595;
+}
+
+
+// .buttonsSec .optionsBtn {
+//     border-radius: 20px;
+//     padding: 10px 20px;
+//     background-color: #fff;
+//     font-size: 10px;
+//     color: #000;
+//     border: none;
+//     width: 200px;
+// }
+
+.buttonsSec .optionsBtn:hover, .buttonsSec .optionsBtn:active {
+    background-color: #c1bcbc;
+    color: #000;
+}
+
+.orderOptCenteredSec{
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+}
+.storeDetailHeadSection{
+    background-color: #b1aaaa;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.storeDetailHeadSection p{
+    font-size: 22px;
+    font-weight: 500;
+}
+.storeDetailHeadSectionPara{
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.hoursSection{
+    margin-top: 10px;
+    padding: 0 10px;
+}
+
+.hoursListing{
+    display: flex;
+}
+
+.hoursListing span{
+    flex: 1;
+    font-size: 17px;
+}
+
+.supportSec{
+    border-top: 1px solid #bbb;
+    margin-top: 20px;
+    padding-top: 10px;
+    display: flex;
+}
+
+.iconsSection{
+    flex: 1;
+    margin-left: 25px;
+}
+
+.iconImg{
+    width: 48px;
+    height: 100%;
+}
+
+.anchorTag{
+    display: flex;
+    align-items: center;
+}
+
+.anchorTag span{
+    padding-left: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}

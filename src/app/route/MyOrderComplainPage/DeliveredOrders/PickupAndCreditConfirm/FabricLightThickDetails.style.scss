@@ -1,0 +1,143 @@
+.centered{
+    text-align: center;
+}
+
+.detaileTrackingHeading{
+    background: #b9b7b7;
+    padding: 10px 15px;
+    font-size: 18px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.orderDeliverySec{
+    font-weight: normal;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.subContent{
+    font-size: 15px;
+    margin: 20px 0px;
+}
+
+// .pageTitle{
+//     margin-bottom: 30px;
+// }
+
+.content{
+    margin-top: 60px;
+    font-size: 15px;
+}
+
+.secMsg{
+    font-size: 16px;
+    @include mobile{
+        padding: 0 25px;
+    }
+}
+
+.submitBtnDetail{
+    border-radius: 35px;
+    padding: 10px 20px;
+    background-color: #ede8e8;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    margin: 30px 0px;
+    font-size: 14px;
+    text-transform: uppercase;
+    @include mobile{
+        padding: 20px 30px;
+        font-size: 16px;
+    }
+}
+
+.inputHeading{
+    margin-bottom: 10px;
+    margin-top: 50px;
+}
+
+.textAreaSec{
+    border-color: #666;
+    border-radius: 10px;
+    margin-top: 8px;
+}
+
+.noteHead{
+    font-weight: bold;
+}
+
+.noteContent{
+    margin: 20px 0px;
+}
+
+.spaceBtm30{
+    margin-bottom: 70px;
+}
+
+.fabric-light-thick-detail-section{
+    background-color: 'green';
+    padding-bottom: 50px;
+    @include mobile{
+        margin-top: 90px;
+    }
+}
+
+.errorMsg{
+    color: #ff1818
+}
+
+.spacer{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.spacer10{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.mgBt10{
+    margin-bottom: 10px;
+}
+
+.fabric-light-thick-detail-section .fabric-message{
+    padding: 0 30px;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 30px;
+}
+
+.detail-section{
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: space-between;
+    padding-bottom: 50px;
+    @include mobile{
+        margin-top: 90px;
+    }
+}
+
+.submitBtnDetail{
+    border-radius: 35px;
+    padding: 10px 20px;
+    background-color: #ede8e8;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    margin: 30px 0px;
+    margin-bottom: 50px;
+    font-size: 14px;
+    text-transform: uppercase;
+    @include mobile{
+        padding: 20px 30px;
+        font-size: 16px;
+        
+    }
+}

@@ -1,0 +1,184 @@
+<?php
+$colorConfig = $this->getThemeConfiguration('color_customization');
+$contentConfig = $this->getThemeConfiguration('content_customization');
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$storeManager = $objectManager->get('\Magento\Store\Model\StoreManagerInterface');
+$getBaseUrl = $storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_WEB);
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <script>
+        window.storeList = JSON.parse(`<?= $this->getStoreListJson() ?>`);
+        window.storeRegexText = `/(${window.storeList.join('|')})?`;
+    </script>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/OneSignalSDKWorker.js');
+                console.log('window.addEventListener => load event => navigator.serviceWorker', navigator.serviceWorker)
+            });
+            if ('getInstalledRelatedApps' in navigator) {
+                /*const divNotSupported = document.getElementById('notSupported');
+                 divNotSupported.classList.toggle('hidden', true);*/
+                //console.log('getInstalledRelatedApps');
+                checkForRelatedApps();
+            }
+            async function checkForRelatedApps() {
+                let installedApps = await navigator.getInstalledRelatedApps();
+                let nativeApp = installedApps.find(app => app.platform === 'webapp');
+                if (nativeApp) {
+                    let installAndroid = document.querySelector('.InstallPromptAndroid');
+                    installAndroid.style.display = 'none';
+
+                    let installIos = document.querySelector('.InstallPromptIOS');
+                    installIos.style.display = 'none';
+                }
+            }
+        }
+
+        window.actionName = {
+            type: `PWA_ROUTER`
+        };
+        console.log('window.actionName', window.actionName)
+        window.contentConfiguration = <?= json_encode($contentConfig) ?> || {};
+    </script>
+    <script async src="<?= $this->getStaticFile("assets/pwacompat.min.js"); ?>"></script>
+
+    <style>
+        <?php if ($colorConfig['enable_color_customization']['enable_custom_colors'] !== "0") : ?><?php $colorArray = $colorConfig['primary_colors'] + $colorConfig['secondary_colors']; ?> :root {
+            <?php foreach ($colorArray as $code => $color) : ?><?php if (strpos($code, 'color') !== false) : ?><?= sprintf('--imported_%s: #%s;', $code, $color); ?><?php endif; ?><?php endforeach; ?>
+        }
+
+        /* <?php endif; ?>@font-face {
+            font-family: 'Neue-Montreal';
+            font-weight: 300;
+            font-display: fallback;
+            src: local('Neue-Montreal Light'), local('Neue-Montreal-Light'), url(/media/font/Neue-Montreal-Light.ttf) format('truetype');
+        } */
+
+        @font-face {
+            font-family: 'Neue-Montreal';
+            font-weight: normal;
+            font-display: fallback;
+            src: local('Neue-Montreal Regular'), local('Neue-Montreal-Regular'), url(/media/font/Neue-Montreal-Regular.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Neue-Montreal';
+            font-weight: 600;
+            font-display: fallback;
+            src: local('Neue-Montreal SemiBold'), local('Neue-Montreal-SemiBold'), url(/media/font/Neue-Montreal-SemiBold.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'Neue-Montreal';
+            font-weight: bold;
+            font-display: fallback;
+            src: local('Neue-Montreal Bold'), local('Neue-Montreal-Bold'), url(/media/font/Neue-Montreal-Bold.ttf) format('truetype');
+        }
+
+        @font-face {
+            font-family: 'slick';
+            font-weight: 400;
+            font-style: normal;
+            src: local('slick'), local('slick'), url('/media/slick/slick.ttf') format('truetype')
+        }
+
+        /* @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            src: local('Poppins Regular'), local('Poppins-Regular'), url('/media/font/Poppins-Regular.ttf') format('truetype');
+        } */
+
+        .slick-loading .slick-list {
+            background: #fff url('/media/slick/ajax-loader.gif') center center no-repeat
+        }
+    </style>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, viewport-fit=cover">
+
+    <link rel="manifest" href="<?= $getBaseUrl . 'media/manifest_v5.json'; ?>">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="<?= $getBaseUrl . 'media/pwa_icons/apple-touch-icon.png'; ?>">
+    <link rel="icon" type="image/png" sizes="32x32" href="<?= $getBaseUrl . 'media/pwa_icons/favicon-32x32.png'; ?>">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?= $getBaseUrl . 'media/pwa_icons/favicon-16x16.png'; ?>">
+
+    <link rel="mask-icon" href="<?= $getBaseUrl . 'media/pwa_icons/safari-pinned-tab.svg'; ?>" color="#fe4164">
+    <meta name="application-name" content="Zellbury">
+    <meta name="msapplication-TileColor" content="#dd3857">
+    <meta name="msapplication-TileImage" content="<?= $getBaseUrl . 'media/pwa_icons/mstile-144x144.png'; ?>">
+    <meta name="msapplication-config" content="<?= $getBaseUrl . 'media/pwa_icons/browserconfig.xml'; ?>">
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#dd3857">
+
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#dd3857">
+
+    <!-- IE -->
+    <meta name="msapplication-square192x192logo" content="<?= $getBaseUrl . 'media/pwa_icons/android-chrome-192x192.png'; ?>">
+    <meta name="msapplication-square512x512logo" content="<?= $getBaseUrl . 'media/pwa_icons/android-chrome-512x512.png'; ?>">
+
+    <!-- iOS Safari -->
+    <link rel="apple-touch-icon" sizes="512x512" href="<?= $getBaseUrl . 'media/pwa_icons/android-chrome-512x512.png'; ?>">
+
+    <!-- Portrait -->
+    <!-- iPhone Xs Max -->
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-1242-2688.png'; ?>">
+    <!-- iPhone Xr -->
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-828-1792.png'; ?>">
+    <!-- iPhone X, Xs -->
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-1125-2436.png'; ?>">
+    <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus -->
+    <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-1242-2208.png'; ?>">
+    <!-- iPhone 8, 7, 6s, 6 -->
+    <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-750-1334.png'; ?>">
+    <!-- iPad Pro 12.9" -->
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-2048-2732.png'; ?>">
+    <!-- iPad Pro 11” -->
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-1668-2388.png'; ?>">
+    <!-- iPad Pro 10.5" -->
+    <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-1668-2224.png'; ?>">
+    <!-- iPad Mini, Air -->
+    <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-portrait-1536-2048.png'; ?>">
+
+    <!-- Landscape -->
+    <!-- iPhone Xs Max -->
+    <link rel="apple-touch-startup-image" media="(device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2688-1242.png'; ?>">
+    <!-- iPhone Xr -->
+    <link rel="apple-touch-startup-image" media="(device-width: 896px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-1792-828.png'; ?>">
+    <!-- iPhone X, Xs -->
+    <link rel="apple-touch-startup-image" media="(device-width: 812px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 3)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2436-1125.png'; ?>">
+    <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus -->
+    <link rel="apple-touch-startup-image" media="(device-width: 736px) and (device-height: 414px) and (-webkit-device-pixel-ratio: 3)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2208-1242.png'; ?>">
+    <!-- iPhone 8, 7, 6s, 6 -->
+    <link rel="apple-touch-startup-image" media="(device-width: 667px) and (device-height: 375px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-1334-750.png'; ?>">
+    <!-- iPad Pro 12.9" -->
+    <link rel="apple-touch-startup-image" media="(device-width: 1366px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2732-2048.png'; ?>">
+    <!-- iPad Pro 11” -->
+    <link rel="apple-touch-startup-image" media="(device-width: 1194px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2388-1668.png'; ?>">
+    <!-- iPad Pro 10.5" -->
+    <link rel="apple-touch-startup-image" media="(device-width: 1112px) and (device-height: 834px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2224-1668.png'; ?>">
+    <!-- iPad Mini, Air -->
+    <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 768px) and (-webkit-device-pixel-ratio: 2)" href="<?= $getBaseUrl . 'media/pwa_icons/Apple-Launch-landscape-2048-1536.png'; ?>">
+
+    <meta name="apple-mobile-web-app-title" content="Zellbury">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+</head>
+
+<body>
+    <noscript> You need to enable JavaScript to run this app. </noscript>
+    <div id="root"></div>
+    <script src="<?= $this->getStaticBundleFile() ?>"></script>
+</body>
+
+</html>

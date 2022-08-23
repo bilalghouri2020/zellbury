@@ -1,0 +1,153 @@
+
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --product-information-background: var(--secondary-base-color);
+}
+
+.DeliveryInformation {
+    top: -1px;
+    border-top: 1px solid var(--expandable-content-divider-color);
+
+    &-Wrapper {
+        padding: 0;
+
+        @include after-mobile {
+            padding: 3rem 1rem;
+        }
+    }
+
+    &-ExpandableContentHeading {
+        @include after-mobile {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+    }
+
+    &-ExpandableContentContent {
+        &_isContentExpanded {
+            @include mobile {
+                padding: 0 1rem;
+            }
+        }
+
+        @include after-mobile {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 4rem;
+            justify-content: center;
+            align-items: flex-start;
+        }
+    }
+
+    &-Placeholder {
+        margin-top: 2rem;
+
+        span {
+            display: block;
+            margin-bottom: 1rem;
+        }
+    }
+
+    &-Description,
+    &-Attributes {
+        width: 100%;
+    }
+
+    &-Attributes {
+        display: flex;
+        flex-wrap: wrap;
+
+        @include mobile {
+            margin-top: 2rem;
+        }
+    }
+
+    &-ValueLabel,
+    &-AttributeLabel {
+        flex: 0 0 50%;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    &-ValueLabel {
+        padding-left: .5rem;
+        margin-bottom: 1rem;
+    }
+
+    &-AttributeLabel {
+        font-weight: bold;
+
+        &::after {
+            content: ':';
+        }
+    }
+
+    &-Image {
+        padding-bottom: 40%;
+        mix-blend-mode: multiply;
+        margin-right: 10rem;
+        min-width: 30rem;
+        background: none;
+
+        @include mobile {
+            display: none;
+        }
+    }
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  background-color: #fff;
+  border-radius: 4px;
+  border: 1px solid #2d2d2d;
+
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  color: #2d2d2d;
+  width: 50%
+}
+
+/* Change background color of buttons on hover */
+/*.tab button:hover {
+/*  background-color: #fff;
+/*  color: #2d2d2d;
+/*}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #2d2d2d;
+  color: white;
+}
+.tabcontent.active {
+  display: block;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+  color: #2d2d2d;
+}

@@ -1,0 +1,14 @@
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical{
+    // height: 0px;
+}
+.MuiStepLabel-vertical > .MuiStepLabel-labelContainer > .MuiStepLabel-label{
+    // text-align: start;
+}
+
+.MuiStepConnector-root .MuiStepConnector-vertical .Mui-disabled {
+    margin-left: 0px;
+}
+
+.MuiStepConnector-line .MuiStepConnector-lineVertical{
+    min-height: 10px;
+}

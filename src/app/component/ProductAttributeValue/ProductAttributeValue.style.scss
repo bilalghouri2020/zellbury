@@ -1,0 +1,305 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --option-background-color: #{$white};
+    --option-check-mark-background: #{$black};
+    --option-padding: 0 12px;
+    --option-margin: 0;
+    --option-size: 45px;
+    --option-text-color: #979797;
+    --option-border-color: #979797;
+
+    @include mobile {
+        --option-border-color: #{$black};
+        --option-text-color: #{$black};
+    }
+}
+
+.ProductAttributeValue {
+    --button-background: initial;
+    --button-color: initial;
+    --button-padding: 0;
+    --option-is-selected: 0;
+
+    margin-left: 0;
+    
+    &-Color,
+    &-String,
+    &-Image,
+    &-Text {
+        background-color: var(--option-background-color);
+        border-color: var(--option-border-color);
+        border-width: 1px;
+        color: var(--option-text-color);
+        display: inline-block;
+        min-height: var(--option-size);
+        width: var(--option-size);
+        margin: var(--option-margin);
+        padding: var(--option-padding);
+    }
+
+    &-Image {
+      @include after-mobile {
+        margin: 0 3rem 1rem 0;
+    }
+        padding: 0;
+        border-radius: 50%;
+        position: relative;
+    }
+    &-AttributeStock{
+      font-size: 12px;
+      font-weight: bold;
+      color: #000000;
+      &_isLow{
+        color: #DC6D6D;
+      }
+    }
+    &-AttributeStock-Image{
+      font-size: 12px;
+      font-weight: bold;
+      color: #000000;
+      position: fixed;
+      margin-top: 45px;
+      margin-left: 6px;
+      &_isLow{
+        color: #DC6D6D;
+      }
+    }
+    &-Image-Overlay {
+        --option-check-mark-background: white;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        margin-left: .5rem;
+
+        @include after-mobile {
+            margin: 0;
+        }
+    }
+
+    &-Color {
+      margin-bottom: 0;
+    }
+
+    &-Color,
+    &-Image-Overlay {
+        border-radius: 50%;
+        font-size: 0;
+        width: var(--option-size);
+
+        box-shadow: inset 0 0 0 1px var(--option-border-color);
+        will-change: box-shadow, background-color;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+
+            opacity: var(--option-is-selected);
+            transition: opacity 200ms;
+            will-change: opacity, border-left, border-right;
+        }
+
+        &::before {
+            height: calc(var(--option-size) + 6px);
+            width: calc(var(--option-size) + 6px);
+
+            border-radius: inherit;
+            box-shadow: inherit;
+            left: -3px;
+            top: -3px;
+        }
+
+        &::after {
+            height: calc(var(--option-size) / 5);
+            left: calc(var(--option-size) / 3.3);
+            top: calc(var(--option-size) / 3.3);
+            width: calc(var(--option-size) / 2.5);
+
+            transform: rotate(-45deg);
+
+            border: {
+                left: 2px solid var(--option-check-mark-background);
+                bottom: 2px solid var(--option-check-mark-background);
+            }
+        }
+
+        &:hover {
+            @include after-mobile {
+                &::before,
+                &::after {
+                    --option-is-selected: .5;
+                }
+            }
+        }
+    }
+
+    &-String,
+    &-Text {
+        border-style: solid;
+        line-height: var(--option-size);
+        min-width: calc(1.25 * var(--option-size));
+        width: auto;
+        text-align: center;
+
+        &_isSelected {
+            --option-border-color: var(--primary-base-color);
+            --option-text-color: var(--primary-base-color);
+        }
+    }
+
+    &-Text {
+        display: flex;
+        border: 0;
+        align-items: baseline;
+        margin: 0;
+        line-height: 1.4;
+        text-transform: uppercase;
+
+        &_isSelected {
+            color: var(--primary-base-color);
+        }
+
+        label {
+            font-weight: 400;
+            cursor: pointer;
+            margin: 0;
+
+            &:last-child {
+                border-color: var(--option-border-color);
+            }
+
+            &:first-of-type {
+                padding-left: 1rem;
+                padding-bottom: 0;
+                order: 1;
+                text-align: left;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 3;
+
+                ~ label {
+                    margin: 0;
+                    min-width: 1.5rem;
+                    top: .3rem;
+                }
+            }
+        }
+
+        &:hover,
+        &:focus {
+            label {
+                @include after-mobile {
+                    border-color: var(--primary-base-color);
+                }
+
+                &::after {
+                    @include after-mobile {
+                        --checkmark-color: var(--secondary-dark-color);
+                    }
+                }
+            }
+        }
+
+        @include after-mobile {
+            padding: .5rem 0;
+        }
+    }
+
+    &:hover,
+    &:focus {
+        @include desktop {
+            --option-border-color: #{$black};
+            --option-text-color: #{$black};
+        }
+
+        text-decoration: none;
+    }
+
+    &_isNotAvailable {
+        opacity: .25;
+        pointer-events: none;
+    }
+}
+
+.ProductConfigurableAttributes-MeasurementPopup {
+  margin-bottom: 20px;
+}
+.ReactModalPortal {
+  z-index: 4000;
+}
+.ReactModal__Content img {
+  width: auto !important;
+}
+.SizeAttributes-LabelsCon {
+  width: 70px;
+  float: left;
+}
+.SizeAttributes-ValuesCon {
+  width: 50px;
+  float: left;
+}
+.SizeAttributes-LabelsCon .SizeAttributes-Labels, .SizeAttributes-ValuesCon .SizeAttributes-Values {
+  width: 100%;
+  float: left;
+}
+.SizeAttributes-LabelsCon .SizeAttributes-Labels .Attribute-Label, .SizeAttributes-ValuesCon .SizeAttributes-Values .Attribute-Value {
+  text-align: center;
+  margin-top: 1.5em;
+  width: 100%;
+  float: left;
+  min-height: 15px;
+}
+
+.SizeAttributes-LabelsCon .SizeAttributes-Labels .Attribute-Label {
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+}
+.SizeAttributes-LabelsCon .SizeAttributes-Labels .Attribute-Label:first-child {
+  line-height: 35px !important;
+}
+.SizeAttributes-ValuesCon .SizeAttributes-Values .Attribute-Value a span {
+  margin: 0 !important;
+  padding: 0px 5px !important;
+}
+a.ProductAttributeValue[href="/women-fashion/ready-to-wear?customFilters=color:5673"] {
+  display: flex;
+  align-self: baseline;
+  order: 1;
+}
+@media (max-width:768px) {
+  .SizeAttributes-LabelsCon, .SizeAttributes-ValuesCon {
+    font-size: 10px;
+  }
+  // .SizeAttributes-ValuesCon {
+  //   width: 35px;
+  // }
+  .SizeAttributes-LabelsCon {
+    width: 60px;
+  }
+  .SizeAttributes-LabelsCon .SizeAttributes-Labels .Attribute-Label:first-child {
+    line-height: 47px !important;
+  }
+  .SizeAttributes-ValuesCon .SizeAttributes-Values .Attribute-Value a span {
+    min-width: calc(0.8*var(--option-size));
+  }
+}
+.d_grid{
+  display: grid;
+  margin-top: 0px !important;
+}

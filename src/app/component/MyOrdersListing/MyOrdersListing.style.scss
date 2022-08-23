@@ -1,0 +1,18 @@
+.MyOrdersListing{
+    background-color: #fff;
+}
+
+.MyOrdersListing table{
+    width: 100%;
+}
+.MyOrdersListing table thead tr th {
+    background-color: #dbdbdb;
+}
+
+.MyOrdersListing table tbody tr:hover {
+    background-color: #f5f5f5;
+    cursor: hand;
+}
+.TableList:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,61 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+.WishlistItem {
+    margin-bottom: 0;
+
+    &-Remove,
+    &-AddToCart {
+        width: 100%;
+    }
+
+    &-Row,
+    &-Remove {
+        margin-top: 1rem;
+    }
+
+    &-AddToCart {
+        display: inline-block;
+        margin-top: 0;
+    }
+
+    &-Quantity {
+        margin: 0 .5rem 0 0;
+    }
+
+    &-Row {
+        display: flex;
+    }
+}
+
+.WishlistItem-AddToCart {
+  min-width: 12rem !important;
+  vertical-align: middle !important;
+  padding: 13px 22px !important;
+}
+.WishlistItem-AddToCart span {
+  display: flex !important;
+  opacity: 1 !important;
+  -webkit-transform: translateY(0) !important;
+  transform: translateY(0) !important;
+  transition-property: opacity,-webkit-transform !important;
+  transition-property: transform,opacity !important;
+  transition-property: transform,opacity,-webkit-transform !important;
+  will-change: transform,opacity !important;
+  transition-timing-function: ease-in !important;
+  transition-duration: .25s !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+.WishlistItem-AddToCart span .AddToCart-BagImage {
+  width: 22px !important;
+  margin-right: 6px !important;
+}

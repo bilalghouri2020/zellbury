@@ -1,0 +1,61 @@
+
+
+route folder:
+CartPage (CartPage.component.js)
+Checkout
+checkoutShipping 		(new) double check
+HomePage (HomePage.container.js)
+MyAccount
+MyOrderComplainPage		(new)
+SampleQRCode			(new)
+
+
+query folder: 
+checkout.query.js
+Complain.query.js 		(new)
+QRSCAN.query.js 		(new)
+sources.query.js
+
+store folder:
+Complain 			(new)
+index.js
+Navigation
+Order
+
+component folder:
+CartItem 
+CashBackToggle
+CheckoutShipping
+CheckoutDeliveryOption
+ComplainOrders 			(new)
+DeliveryInformation (folder)
+DemoNotice (folder)
+ExchangeFromStorePopup		(new)
+Field
+FieldTextarea
+Header
+Loader
+MyAccountTabList
+MyAccountTabListItem
+MyOrderListing			(new)
+MyStoresList			(new)
+MyStoreTabList			(new)
+MyStoreTabListItem		(new)
+Notification
+NotifictaionList
+OrderStatusComplain		(new)
+OrderStatusLeopards (style.scss)
+OrderStatusStepper
+ProductActions
+ProductPicture			(new)
+ProductPrice
+Router
+StoreDetailPopup		(new)
+
+Type Folder:
+Account.js
+Router.js
+
+
+
+

@@ -1,0 +1,713 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+:root {
+    --checkout-max-width: 1100px;
+}
+
+.Checkout {
+    @include desktop {
+        margin-top: var(--header-total-height);
+    }
+
+    // @include before-desktop {
+    //     padding-bottom: calc(var(--navigation-tabs-height) + 100px);
+    // }
+
+    &::before {
+        @include after-mobile {
+            content: '';
+            background: var(--breadcrumbs-background);
+            min-height: var(--breadcrumbs-height);
+            display: block;
+        }
+    }
+
+    &-StickyButtonWrapper {
+        @include before-desktop {
+            border-top: 1px solid var(--primary-divider-color);
+            background-color: #fff;
+            position: fixed;
+            padding: 1rem 1rem calc(env(safe-area-inset-bottom) + 1rem);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 85;
+        }
+
+        .Button {
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+
+    &-Step {
+        max-width: 470px;
+    }
+
+    &-Wrapper {
+        padding-top: 1px;
+        max-width: var(--checkout-max-width);
+
+        @include after-mobile {
+            display: grid;
+            // text-align: -webkit-center;
+            grid-template-columns: repeat(2, minmax(calc(50% - 1rem), 470px));
+            grid-gap: 2rem;
+        }
+    }
+&-WrapperCenter {
+        padding-top: 1px;
+        max-width: var(--checkout-max-width);
+
+        @include after-mobile {
+            text-align: -webkit-center;
+            text-align: -moz-center;
+            grid-template-columns: repeat(2, minmax(calc(50% - 1rem), 470px));
+            grid-gap: 2rem;
+        }
+    }
+    &-Heading {
+        text-transform: none;
+        font-weight: 400;
+        font-size: 20px;
+        margin: 0 0 1rem;
+    }
+
+    &-Title {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 25px;
+        margin: 2rem 0;
+
+        @include mobile {
+            display: none;
+        }
+    }
+}
+
+.react-responsive-modal-overlay {
+  z-index: 5000 !important;
+  background: rgba(0,0,0,.9) !important;
+}
+.react-responsive-modal-modalCenter {
+  border-radius: 10px !important;
+  padding: 1rem !important;
+  max-width: 500px !important;
+  width: 100% !important;
+  background-color: #fbfbfb !important;
+  text-align: center !important;
+}
+.react-responsive-modal-modalCenter > p {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.react-responsive-modal-closeButton {
+  top: 5px !important;
+  right: 5px !important;
+}
+.react-responsive-modal-closeButton svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+.CheckoutSuccess{
+  text-align: center;
+  padding: 20px;
+  border: 1px solid;
+}
+
+.CheckoutSuccess-OtpImage {
+  width: auto;
+}
+
+.CheckoutSuccess-OtpForm .CheckoutSuccess-OtpFields .CheckoutSuccess-FormControl input {
+  padding: 10px;
+  font-size: 15px;
+  width: 100%;
+}
+.CheckoutSuccess-OtpForm .CheckoutSuccess-OtpAction {
+  margin: 0 0 10px;
+  border: 0;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+.CheckoutSuccess-OtpForm .CheckoutSuccess-OtpAction .CheckoutSuccess-OtpBtn {
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background-color: #4fad55;
+  color: #fff;
+  outline: 0;
+  border: 0;
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 5px 10px;
+  height: 40px;
+  text-transform: capitalize;
+}
+.CheckoutSuccess-OtpForm p {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.CheckoutSuccess-OtpResend {
+  font-size: 12px;
+}
+.CheckoutSuccess-OtpResendBtn {
+  background: 0 0;
+  border: none;
+  outline: 0;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  color: #00f;
+}
+.CheckoutSuccess-OtpResendBtn:disabled {
+  color: grey !important
+}
+.CheckoutSuccess-OtpResendTimer {
+  margin-left: 10px;
+}
+
+@media (max-width:500px) {
+  .react-responsive-modal-overlay {
+    background: rgb(251, 251, 251) !important;
+  }
+  .react-responsive-modal-modalCenter {
+    box-shadow: none !important;
+  }
+}
+.KeyValueTable{
+  width: 100%;
+  tbody{
+    tr{
+      th{
+        span{
+          font-size: 8px;
+        }
+      }
+    }
+  }
+}
+
+// ===================================================================================
+
+
+.box {
+  width: 200px;
+  height: 200px;
+  outline: 1px solid gold;
+}
+
+
+
+.row {
+  width: 70vw;
+  display: flex;
+  flex-direction: row;
+}
+
+.time-col {
+  min-width: 100px;
+  width: 100px;
+  padding: 5px 5px;
+  display: flex;
+  justify-content: flex-end;
+}
+.icon-col-last{
+  height: 25px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 48px;
+  min-width: 48px;
+  /* outline: 1px solid gold; */
+  overflow: hidden;
+}
+.icon-col {
+  height: 72px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 48px;
+  min-width: 48px;
+  /* outline: 1px solid gold; */
+  overflow: hidden;
+}
+
+.content-col {
+  padding: 5px 5px;
+}
+
+.circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1px solid #4e4e4e;
+  border-radius: 16px;
+}
+
+.icon-col:after {
+  content:"";
+  position: absolute;
+  z-index: -1;
+  top: 25px;
+  bottom: 0;
+/*   left: 50%; */
+  border-left: 2px solid #d4d4d4;
+/*   transform: translate(-50%); */
+}
+
+
+
+
+.MuiStepConnector-root.MuiStepConnector-horizontal.MuiStepConnector-alternativeLabel.MuiStepConnector-completed > span {
+background: #C8E6C9;
+}
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel > span .MuiStepLabel-alternativeLabel > div {
+background: #e8e8e8;
+box-shadow: inherit;
+border: 6px solid #fff;
+}
+
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel > span .MuiStepLabel-alternativeLabel > div svg {
+display: none;
+}
+
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.MuiStep-completed > span .MuiStepLabel-alternativeLabel > div {
+  background: #C8E6C9;
+  border-color: #C8E6C9;
+}
+
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.MuiStep-completed > span .MuiStepLabel-alternativeLabel > div svg path {
+  color: #4EB052;
+  width: 30px;
+}
+
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.MuiStep-completed > span .MuiStepLabel-alternativeLabel > div svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel > span .MuiStepLabel-iconContainer.MuiStepLabel-alternativeLabel {
+// border: 1px solid #e8e8e8;
+border-radius: 50%;
+}
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.MuiStep-completed > span .MuiStepLabel-iconContainer.MuiStepLabel-alternativeLabel{
+
+border-color: #C8E6C9;
+}
+.MuiStepConnector-root.MuiStepConnector-horizontal.MuiStepConnector-alternativeLabel.MuiStepConnector-active > span {
+background: #e8e8e8;
+}
+
+
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical {
+display: flex;
+align-items: center;
+}
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical > label {
+color: grey;
+min-width: 100px;
+width: 100px;
+padding: 5px 5px;
+font-size: 14px;
+display: flex;
+justify-content: flex-end;
+}
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical > .MuiStepLabel-vertical .MuiStepLabel-iconContainer {
+margin-left: 15px;
+margin-right: 15px;
+padding-right: 5px;
+}
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical > .MuiStepLabel-vertical .MuiStepLabel-iconContainer > div {
+border: 2px solid #C8E6C9;
+box-shadow: inherit;
+}
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical > .MuiStepLabel-vertical .MuiStepLabel-iconContainer > div > svg {
+display: none;
+}
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical > .MuiStepLabel-vertical .MuiStepLabel-iconContainer > div > svg > path {
+display: none;
+}
+
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical > .MuiStepLabel-vertical .MuiStepLabel-labelContainer > span {
+font-size: 14px;
+}
+
+.MuiStepConnector-lineVertical {
+width: 3px;
+background: #C8E6C9;
+border: 0;
+min-height: 70px;
+}
+
+.MuiStep-root.MuiStep-vertical.MuiStep-completed .MuiStepLabel-vertical .MuiStepLabel-iconContainer > div {
+background: #4EB052;
+}
+
+.MuiStepConnector-vertical.MuiStepConnector-completed .MuiStepConnector-lineVertical {
+background: #4EB052;
+}
+div.MuiStepConnector-vertical {
+margin-left: 21px;
+padding: 0;
+// margin-top: -10px;
+}
+
+span.MuiStepConnector-lineVertical {
+min-height: 70px;
+}
+
+.div-greetings svg {
+background: #C8E6C9;
+width: 80px;
+height: 80px;
+color: #4EB052;
+border-radius: 50%;
+padding: 14px;
+}
+
+.div-greetings {
+text-align: center;
+margin-top: 35px;
+}
+
+.div-greetings h3 {
+font-size: 20px;
+margin-bottom: 8px;
+}
+
+.div-greetings p {
+font-size: 16px;
+color: grey;
+}
+
+.stapper-vertical-container {
+padding: 24px;
+//width: 80%;
+// margin: 0 auto;
+// margin-top: 50px;
+}
+
+.MuiPaper-root.MuiStepper-root.MuiStepper-vertical.MuiPaper-elevation0 {
+padding-left: 0;
+padding-right: 0;
+}
+
+.stapper-vertical-container > h3 {
+margin: 0;
+font-size: 20px;
+font-weight: bold;
+}
+.MuiPaper-root.MuiStepper-root.MuiStepper-vertical.MuiPaper-elevation0 {
+padding-bottom: 0;
+}
+@media (max-width: 768px){
+.stapper-vertical-container{
+  width: 100%;
+  margin-bottom: 51px;
+}
+}
+.align-left{
+  text-align: left;
+}
+tr.MyAccountOrderPopup-Row td {
+  vertical-align: middle;
+}
+
+// tr.MyAccountOrderPopup-Row td > div {
+//   height: inherit;
+//   padding: 0;
+//   width: 100%;
+// }
+
+// tr.MyAccountOrderPopup-Row td > div > img {
+//   position: inherit;
+//   object-position: inherit;
+//   object-fit: inherit;
+//   height: auto !important;
+// }
+.MuiPaper-root.MuiStepper-vertical .MuiStep-vertical>label{
+  display: block;
+}
+.Checkout-Step .Table-Wrapper td div > img {
+  position: inherit;
+  height: auto !important;
+  object-position: inherit;
+  object-fit: inherit;
+}
+.Checkout-Step .Table-Wrapper td div {
+  padding: 0 !important;
+  height: auto;
+}
+.Checkout-Step .Table-Wrapper td > a {
+  display: inline-block;
+  width: 100%;
+}
+
+
+
+.CheckoutSuccess {
+  border: 0;
+  padding: 0;
+  padding-bottom: 20px;
+}
+
+.div-greetings {
+  margin-top: 15px;
+}
+
+.div-greetings img.success-img {
+  margin: 0;
+  max-width: 120px;
+  width: 120px;
+}
+
+.Checkout-Step .stapper-horizontal-container .MuiStepper-horizontal {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.Checkout-Step .stapper-horizontal-container .MuiStepper-horizontal .MuiStep-alternativeLabel {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+// .KeyValueTable-Wrapper .KeyValueTable:nth-child(1) tr {
+//   border-bottom: 1px solid var(--secondary-dark-color);
+//   background-color: var(--table-secondary-color);
+//   padding: 10px;
+// }
+
+// .KeyValueTable-Wrapper .KeyValueTable:nth-child(1) tr td {
+//   font-size: 14px;
+//   font-weight: 700;
+// }
+
+.stapper-vertical-container>h3 {
+  border-bottom: 1px solid var(--secondary-dark-color);
+  background-color: var(--table-secondary-color);
+  padding: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.stapper-vertical-container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.col-w40{
+  width: 40% !important;
+}
+.MyAccountOrderPopup-ProductsWrapper h4 {
+  font-size: 1.2rem;
+}
+.MyAccountOrderPopup-ProductsWrapper table {
+  margin-top: 1rem;
+}
+.MyAccountOrderPopup-ProductsWrapper table thead tr th {
+  min-width: 0;
+  vertical-align: middle;
+}
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel.MuiStep-completed>span .MuiStepLabel-alternativeLabel>div svg{
+  color: #4EB052;
+
+}
+.Checkout-Step .stapper-vertical-container > h4,.Checkout-Step .stapper-vertical-container > p {
+  text-align: left;
+}
+
+.Checkout-Step .stapper-vertical-container > h4 {
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--secondary-dark-color);
+  background-color: var(--table-secondary-color);
+  padding: 10px;
+  line-height: 17px;
+}
+.MyAccountOrderPopup-Row {
+  height: 80px;
+  padding: 10px 0;
+}
+.MyAccountOrderPopup-Thumbnail {
+  width: 60px;
+  height: 60px;
+  padding: 0;
+}
+.Checkout-Step .stapper-vertical-container > p {
+  line-height: 20px;
+}
+.MyAccountOrderPopup-Products {
+  width: 100%;
+  margin-top: 1rem;
+  table-layout: initial;
+}
+.MyAccountOrderPopup-Products td, .MyAccountOrderPopup-Products th {
+  min-width: 0;
+}
+.MuiStep-root.MuiStep-horizontal.MuiStep-alternativeLabel:not(.MuiStep-completed) > span .MuiStepLabel-alternativeLabel>div {
+  box-shadow: 0 0px 0px 1px rgba(0,0,0,.25);
+}
+.emptyDiv {
+  height: 150px;
+}
+.deliveryLocationHeading{
+  text-transform: none;
+  font-weight: 400;
+  font-size: 17px;
+  margin: 2px 0px;
+  line-height: 21px;
+  margin-bottom: 3px;
+}
+p.deliveryLocationPara{
+  font-size: 11px;
+  line-height: 17px;
+  margin-bottom: 5px;
+}
+.locationEnabled {
+  color: #03A685;
+  font-weight: 600;
+}
+.locationDisable {
+  color: #DC6D6D;
+  font-weight: 600;
+  cursor: pointer;
+}
+.enableLocationButton{
+  background: #eee;
+  border: 1px solid #9c9c9c;
+  text-transform: capitalize;
+  padding: 3px 7px;
+  border-radius: 3px;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+
+
+
+
+
+// ahmed css styles applying
+
+.location-popup-main {
+  padding: 20px 15px;
+}
+
+.location-popup-main .location-popup-inner {
+  background: #f3f3f3;
+  padding: 15px 15px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+.location-popup-main .location-popup-inner .content .title {
+  font-size: 14px;
+  margin-bottom: 10px;
+  line-height: 24px;
+  color: #000;
+}
+
+.location-popup-main  .text {
+  font-size: 12px;
+  text-align: center;
+  color: #000;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.location-popup-main .location-popup-inner .btn-wrapper {
+  margin: 30px 0 0;
+  text-align: center;
+}
+
+.location-popup-main .location-popup-inner .btn-wrapper .btn {
+  padding: 14px;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-radius: 4px;
+  border: 1px solid transparent;
+}
+
+.location-popup-main .location-popup-inner .btn-wrapper .btn.dark-btn {
+  margin-bottom: 10px;
+  // background: #dd174c;
+  background: var(--primary-base-color);
+  color: #fff;
+}
+
+.location-popup-main .location-popup-inner .btn-wrapper .btn.light-btn {
+  // border-color: #dd174c;
+  border-color: var(--primary-base-color);
+  background: #FFF;
+}
+
+.location-popup-main  .location-popup-footer {
+  width: 100%;
+  max-width: 400px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.location-popup-main .location-popup-footer:before {
+  content: "";
+  display: block;
+  border-top: 1px solid #f3f3f3;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 18px;
+}
+
+.location-popup-main .link {
+  // color: #dd174c;
+  color: var(--primary-base-color);
+  font-weight: 600;
+  margin-top: 15px;
+  display: block;
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  .location-popup-main .location-popup-inner .content .title {
+      font-size: 20px;
+      line-height: 30px;
+      text-align: center;
+  }
+  .location-popup-main .location-popup-inner {
+      padding: 30px 20px;
+      max-width: 600px;
+  }
+  .location-popup-main .text {
+      font-size: 16px;
+      line-height: 26px;
+  }
+}

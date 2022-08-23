@@ -1,0 +1,35 @@
+// Need to push this TO DATALAYER after COMPLETE ORDER IS CLICKED page is loaded BUT BEFORE PURCHASE EVENT
+
+dataLayer.push({ ecommerce: null });  // Clear the previous ecommerce object.
+dataLayer.push({
+  event: "add_payment_info",
+  ecommerce: {
+    currency: "USD",
+    value: 7.77,
+    coupon: "SUMMER_FUN", // IF ANY COUPON WAS APPLIED
+    payment_type: "Credit Card", // PAYMENT METHOD
+    items: [
+    {
+      item_id: "SKU_12345", //sku
+      item_name: "Stan and Friends Tee", //product name
+     // affiliation: "Google Merchandise Store",
+     // coupon: "SUMMER_FUN",
+      currency: "PKR",
+      discount: 2.22, // PRICE - SPECIAL PRICE
+      index: 0, // PRODUCT POSITION
+      item_brand: "Zellbury",
+      item_category: "Apparel", // category level 1
+      item_category2: "Adult", // category level 2
+      item_category3: "Shirts", //category level 3
+     //item_category4: "null", 
+     //item_category5: "null",
+     //item_list_id: "related_products",
+     //item_list_name: "Related Products",
+      item_variant: "green", // color
+     //location_id: "ChIJIQBpAG2ahYAR_6128GcTUEo",
+      price: 9.99, // price - (not special price)
+      quantity: 1 // QTY THAT IS removed from CART FOR THIS ITEM SPECIFICALLY
+    }
+    ]
+  }
+});

@@ -1,0 +1,181 @@
+:root {
+    --my-exchangeoptions-content-background: #{$white};
+
+    @include after-mobile {
+        --my-orderslexchangeoptions-background: var(--secondary-base-color);
+        margin-top: 90px;
+    }
+}
+
+.ExchangeOptions {
+    background: var(--my-exchangeoptions-background);
+
+    &-Wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+        grid-column-gap: 2rem;
+        grid-row-gap: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        @include mobile {
+            padding: 0;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &-TabContent {
+        background: var(--my-exchangeoptions-content-background);
+        padding: 1rem;
+        padding-bottom: 76px;
+
+        @include after-mobile {
+            grid-row: span 2;
+            padding: 2rem;
+        }
+    }
+
+    &-Heading {
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: none;
+        margin: 0 0 2rem;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &-Button,
+    button {
+        @include mobile {
+            width: 100%;
+        }
+    }
+}
+
+.buttonsSec {
+    margin-bottom: 13px;
+    // text-align: center;
+    margin-top: 15px;
+
+    @include mobile {
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.buttonsSec .optionsBtn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    width: 200px;
+    text-transform: none;
+
+    @include mobile {
+        padding: 25px 20px;
+        font-size: 16px;
+    }
+}
+
+.buttonsSec .optionsBtn:hover,
+.buttonsSec .optionsBtn:active {
+    background-color: #c1bcbc;
+    color: #000;
+}
+
+.orderOptCenteredSec {
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.confirmation-wrapper-pickup {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 15px 0px;
+    margin-top: 12px;
+    padding-bottom: 30px;
+
+    @include mobile {
+        margin-top: 100px;
+    }
+}
+
+.confirmation-wrapper-pickup .pickUpBtnSec {
+    margin-bottom: 30px;
+    margin-top: 15px;
+}
+
+.confirmation-wrapper-pickup .pickUpBtnSec button {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    width: 200px;
+    font-size: 17px;
+
+    @include mobile {
+        font-size: 20px;
+        padding: 20px;
+    }
+}
+
+.confirmation-wrapper-pickup .pleaseconfirm {
+    font-size: 17px;
+    margin-bottom: 15px;
+
+    @include mobile {
+        padding: 10px 20px;
+    }
+}
+
+.confirmation-wrapper-pickup .mistake-help {
+    width: 500px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    margin-bottom: 25px;
+
+    @include mobile {
+        width: 100%;
+        padding: 20px 25px;
+    }
+}
+
+.confirmation-wrapper-pickup .mistake-help p.howwehelp {
+    font-size: 17px;
+
+    @include mobile {
+        font-size: 18px;
+    }
+}
+
+.confirmation-wrapper-pickup .noteHead {
+    font-size: 17px;
+    font-weight: bold;
+
+    @include mobile {
+        font-size: 17px;
+    }
+}
+
+.confirmation-wrapper-pickup .orSec {
+    margin-bottom: 15px;
+}
+
+.confirmation-wrapper-pickup .orSec p {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.confirmation-wrapper-pickup .btn-mistake button {
+    font-size: 18px;
+}

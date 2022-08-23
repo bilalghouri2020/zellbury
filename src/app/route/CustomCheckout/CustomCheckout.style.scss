@@ -1,0 +1,195 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+ :root {
+    --checkout-max-width: 1100px;
+}
+
+.Checkout {
+    @include desktop {
+        margin-top: var(--header-total-height);
+    }
+
+    // @include before-desktop {
+    //     padding-bottom: calc(var(--navigation-tabs-height) + 100px);
+    // }
+
+    &::before {
+        @include after-mobile {
+            content: '';
+            background: var(--breadcrumbs-background);
+            min-height: var(--breadcrumbs-height);
+            display: block;
+        }
+    }
+
+    &-StickyButtonWrapper {
+        @include before-desktop {
+            border-top: 1px solid var(--primary-divider-color);
+            background-color: #fff;
+            position: fixed;
+            padding: 1rem 1rem calc(env(safe-area-inset-bottom) + 1rem);
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            z-index: 85;
+        }
+
+        .Button {
+            @include mobile {
+                width: 100%;
+            }
+        }
+    }
+
+    &-Step {
+        max-width: 470px;
+    }
+
+    &-Wrapper {
+        padding-top: 1px;
+        max-width: var(--checkout-max-width);
+
+        @include after-mobile {
+            display: grid;
+            // text-align: -webkit-center;
+            grid-template-columns: repeat(2, minmax(calc(50% - 1rem), 470px));
+            grid-gap: 2rem;
+        }
+    }
+&-WrapperCenter {
+        padding-top: 1px;
+        max-width: var(--checkout-max-width);
+
+        @include after-mobile {
+            text-align: -webkit-center;
+            text-align: -moz-center;
+            grid-template-columns: repeat(2, minmax(calc(50% - 1rem), 470px));
+            grid-gap: 2rem;
+        }
+    }
+    &-Heading {
+        text-transform: none;
+        font-weight: 400;
+        font-size: 20px;
+        margin: 0 0 1rem;
+    }
+
+    &-Title {
+        text-transform: capitalize;
+        font-weight: 600;
+        font-size: 25px;
+        margin: 2rem 0;
+
+        @include mobile {
+            display: none;
+        }
+    }
+}
+
+.react-responsive-modal-overlay {
+  z-index: 5000 !important;
+  background: rgba(0,0,0,.9) !important;
+}
+.react-responsive-modal-modalCenter {
+  border-radius: 10px !important;
+  padding: 1rem !important;
+  max-width: 500px !important;
+  width: 100% !important;
+  background-color: #fbfbfb !important;
+  text-align: center !important;
+}
+.react-responsive-modal-modalCenter > p {
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.react-responsive-modal-closeButton {
+  top: 5px !important;
+  right: 5px !important;
+}
+.react-responsive-modal-closeButton svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+.CheckoutSuccess{
+  text-align: center;
+  padding: 20px;
+  border: 1px solid;
+}
+
+.CheckoutSuccess-OtpImage {
+  width: auto;
+}
+
+.CheckoutSuccess-OtpForm .CheckoutSuccess-OtpFields .CheckoutSuccess-FormControl input {
+  padding: 10px;
+  font-size: 15px;
+  width: 100%;
+}
+.CheckoutSuccess-OtpForm .CheckoutSuccess-OtpAction {
+  margin: 0 0 10px;
+  border: 0;
+  width: 100%;
+  padding: 0;
+  text-align: center;
+}
+.CheckoutSuccess-OtpForm .CheckoutSuccess-OtpAction .CheckoutSuccess-OtpBtn {
+  width: 100px;
+  margin-top: 10px;
+  border-radius: 4px;
+  background-color: #4fad55;
+  color: #fff;
+  outline: 0;
+  border: 0;
+  font-size: 18px;
+  letter-spacing: 2px;
+  padding: 5px 10px;
+  height: 40px;
+  text-transform: capitalize;
+}
+.CheckoutSuccess-OtpForm p {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.CheckoutSuccess-OtpResend {
+  font-size: 12px;
+}
+.CheckoutSuccess-OtpResendBtn {
+  background: 0 0;
+  border: none;
+  outline: 0;
+  height: auto;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  color: #00f;
+}
+.CheckoutSuccess-OtpResendBtn:disabled {
+  color: grey !important
+}
+.CheckoutSuccess-OtpResendTimer {
+  margin-left: 10px;
+}
+
+@media (max-width:500px) {
+  .react-responsive-modal-overlay {
+    background: rgb(251, 251, 251) !important;
+  }
+  .react-responsive-modal-modalCenter {
+    box-shadow: none !important;
+  }
+}
+.KeyValueTable {
+    width: 100%;
+}
+.MyAccountOrderPopup-Products{
+    width: 100%;
+}

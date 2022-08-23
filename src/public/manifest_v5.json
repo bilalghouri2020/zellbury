@@ -1,0 +1,24 @@
+{
+  "start_url": "/?utm_source=PWA",
+  "short_name": "ZELLBURY",
+  "name": "ZELLBURY",
+  "description": "ZELLBURY Fashion Store - is a unique and edgy one-stop solution for all your fashion needs.",
+  "theme_color": "#9E594F",
+  "background_color": "#9E594F",
+  "display": "standalone",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/media/pwa_icons/android-chrome-192x192.png?v=feb22v1",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "/media/pwa_icons/android-chrome-512x512.png?v=feb22v1",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable any"
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+.camSec{
+    width: 300px;
+    margin: 0 auto;
+    text-align: center;
+    @include mobile{
+        width: 100%;
+        // margin-top: 70px;
+        margin-top: 0px;
+    }
+}
+
+.cameraSection{
+    width: auto;
+    height: auto;
+    @include mobile{
+        // width: 70%;
+        // height: 70%;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.captureButtonSec{
+    margin-top: 40px;
+    @include mobile{
+        display: flex;
+        justify-content: space-around;
+        bottom: 80px;
+        margin-top: 0px;
+    }
+}
+
+.captureZoomButtonSec{
+    margin-top: 40px;
+    @include mobile{
+        display: flex;
+        padding: 0 30px;
+        justify-content: space-between;
+        top: 100px;
+        margin-top: 0px;
+        z-index: 1;
+    }
+}
+
+.captureButtonSec .camIconSec{
+    display: none;
+    @include mobile{
+        display: block;
+    }
+}
+
+.captureButtonSec .camIconSec svg{
+    font-size: 50px;
+    color: #fff
+}
+.captureButtonSec .optionsBtnCam{
+    display: block;
+    @include mobile{
+        display: none;
+    }
+}
+
+.captureZoomButtonSec .camIconSec{
+    display: none;
+    @include mobile{
+        display: block;
+    }
+}
+
+.captureZoomButtonSec .camIconSec svg{
+    font-size: 50px;
+    color: #fff
+}
+.captureZoomButtonSec .optionsBtnCam{
+    display: block;
+    @include mobile{
+        display: none;
+    }
+}
+
+.retakeButtonSec{
+    margin-top: 40px;
+    display: block;
+    @include mobile{
+        display: none;
+    }
+}
+
+.retakeButtonSec button{
+    width: 150px;
+}
+.retakeButtonSec button:first-child{
+    margin-right: 10px;
+}
+.camSec img{
+    width: 'auto';
+    @include mobile{
+        // width: "75%"
+        width: "100%"
+    }
+}

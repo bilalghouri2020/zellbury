@@ -1,0 +1,352 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+.Field {
+    margin-top: 1rem;
+
+    label {
+        font-size: 1.05rem;
+    }
+
+    &-Label {
+        font-weight: 700;
+        padding-bottom: .3rem;
+    }
+
+    &-Message {
+        margin-bottom: -.1em;
+        font-size: 1.05rem;
+        font-weight: 600;
+        color: var(--primary-error-color);
+    }
+
+    &-Note {
+        margin-bottom: .2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--field-note);
+        opacity: 0;
+        height: 0;
+        transition: height .1s ease-in, opacity .1s linear;
+        will-change: height, opacity;
+
+        &::before {
+            content: '* ';
+        }
+    }
+
+    &_hasError {
+        input,
+        textarea {
+            border: 1px solid var(--primary-error-color);
+        }
+    }
+
+    &::placeholder {
+        color: var(--field-note);
+        font-size: .9rem;
+    }
+
+    input:focus + .Field-Note {
+        opacity: 1;
+        height: 100%;
+    }
+
+    &_type {
+        &_checkbox,
+        &_radio {
+            label {
+                &:first-of-type {
+                    display: inline-block;
+                    max-width: calc(100vw - 2rem - 45px);
+                    vertical-align: middle;
+
+                    ~ label {
+                        margin-left: 1rem;
+                    }
+                }
+
+                &:last-of-type {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+
+    [type='checkbox'],
+    [type='radio'] {
+        position: absolute;
+        opacity: 0;
+        padding: 0;
+        min-width: 0;
+        min-height: 0;
+
+        + label {
+            --box-color: #{white};
+
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            padding: 0;
+            width: 1.5rem;
+            height: 1.5rem;
+            background-color: var(--box-color);
+            border: 1px solid var(--input-border-color);
+            transition-property: background-color, border-color;
+            transition-duration: .25s;
+            transition-timing-function: ease-in;
+            will-change: background-color, border-color;
+
+            &::after {
+                --checkmark-color: transparent;
+
+                content: '';
+                position: absolute;
+                pointer-events: none;
+                background: var(--checkmark-color);
+                transition-duration: .25s;
+                transition-timing-function: ease-in;
+                transition-property: background-color;
+                will-change: background-color;
+            }
+
+            &:hover {
+                @include after-mobile {
+                    --box-color: var(--secondary-light-color);
+                    border-color: var(--primary-base-color);
+                }
+
+                &::after {
+                    @include after-mobile {
+                        --checkmark-color: var(--secondary-dark-color);
+                    }
+                }
+            }
+        }
+
+        &:disabled + label {
+            color: #b8b8b8;
+            cursor: auto;
+        }
+
+        &:checked + label {
+            background-color: var(--primary-base-color) !important;
+            border-color: var(--primary-base-color);
+
+            &::after {
+                --checkmark-color: #{$white};
+            }
+        }
+    }
+
+    [type='checkbox'] {
+        + label {
+            &::after {
+                left: .25rem;
+                top: .6rem;
+                width: .2rem;
+                height: .2rem;
+                box-shadow:
+                    2px 0 0 var(--checkmark-color),
+                    4px 0 0 var(--checkmark-color),
+                    4px -2px 0 var(--checkmark-color),
+                    4px -4px 0 var(--checkmark-color),
+                    4px -6px 0 var(--checkmark-color),
+                    4px -8px 0 var(--checkmark-color);
+                transform: rotate(45deg);
+                transition-property: background-color, box-shadow;
+                will-change: background-color, box-shadow;
+            }
+        }
+
+        &:checked {
+            &:hover {
+                + label {
+                    @include after-mobile {
+                        background-color: var(--primary-base-color);
+                    }
+                }
+            }
+        }
+    }
+
+    [type='radio'] {
+        + label {
+            border-radius: 50%;
+
+            &::after {
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                margin: auto;
+                width: .5rem;
+                height: .5rem;
+                border-radius: 50%;
+                transition-property: background-color, box-shadow;
+                will-change: background-color, box-shadow;
+            }
+        }
+
+        &:focus + label {
+            --box-color: var(--secondary-light-color);
+
+            border-color: var(--primary-base-color);
+
+            &::after {
+                --checkmark-color: #{$white};
+            }
+        }
+    }
+
+    &-Labels {
+        span {
+            letter-spacing: 1.05px;
+        }
+    }
+}
+
+.Field_type_auto ul.suggestions {
+  background: #fff;
+  border: 1px solid #000;
+  height: 200px;
+  overflow-y: scroll;
+  position: absolute;
+  z-index: 9;
+  width: 100%;
+  cursor: pointer;
+}
+.Field_type_auto ul.suggestions::-webkit-scrollbar {
+  display: block;
+  width: 10px;
+}
+.Field_type_auto ul.suggestions::-webkit-scrollbar-thumb {
+  background: #000;
+}
+.Field_type_auto ul.suggestions li {
+  list-style: none;
+  padding: 5px 20px;
+  margin: 0;
+}
+.Field_type_auto ul.suggestions li.suggestion-active {
+  background: lightgray;
+  font-weight: bold;
+}
+.Field_type_auto ul.suggestions li:before {
+  content: unset;
+}
+
+.Field_type_text #firstname, .Field_type_text #street {
+  text-transform: capitalize;
+}
+
+.Header.Header_name_checkout, .Checkout-StickyButtonWrapper, .Field_type_select .Field-SelectOptions, .Popup {
+  z-index: 3000 !important;
+}
+
+main.Checkout div.Checkout-Step .Field
+{
+  margin: 15px 0;
+  position: relative;
+}
+main.Checkout div.Checkout-Step .Field input
+{
+  position: relative;
+  z-index: 2000;
+  transition: border-color .25s ease-in-out;
+  background-color: transparent;
+}
+main.Checkout div.Checkout-Step .Field label
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+  z-index: 1500;
+  font-weight: 400;
+}
+main.Checkout div.Checkout-Step .Field input::placeholder
+{
+  color: transparent;
+}
+main.Checkout div.Checkout-Step .Field input + label
+{
+  position: absolute;
+  top: 1em;
+  left: .7em;
+  display: inline-block;
+  padding: 0 .5em;
+  transition: transform .25s, opacity .25s, padding .25s ease-in-out;
+  transform-origin: 0 0;
+}
+main.Checkout div.Checkout-Step .Field input:focus + label,
+main.Checkout div.Checkout-Step .Field input:not(:placeholder-shown) + label
+{
+  z-index: 2500;
+  transform: translate(0, -2em) scale(.9);
+  color: rgba(0, 0, 0, .75);
+  background-color: #fff;
+}
+
+main.Checkout div.Checkout-Step .CheckoutGuestForm .Field_type_checkbox label {
+  margin: 10px 0;
+  left: 0;
+}
+main.Checkout div.Checkout-Step .CheckoutGuestForm .Field_type_checkbox label.Field-Label {
+  margin: 0;
+  left: 25px;
+}
+
+main.Checkout div.Checkout-Step .Field_type_select label {
+  top: -12px;
+  left: .70em;
+  background: #fff;
+  width: auto;
+  min-width: unset !important;
+  margin: 0;
+  padding: 0 .7em;
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, .75);
+}
+
+main.Checkout div.Checkout-Step form#BILLING_STEP .Field_type_checkbox {
+  width: 100%;
+}
+main.Checkout div.Checkout-Step form#BILLING_STEP .Field_type_checkbox label.Field-Label {
+  margin-left: 2.5rem;
+  margin-top: 0;
+  top: -12px;
+}
+
+@media (min-width:1025px) {
+  .Field.CategorySort-Select label {
+    display: none;
+  }
+}
+
+@media (max-width:400px) {
+  main.Checkout div.Checkout-Step .Field input + label {
+    font-size: 0.8em;
+    top: 1.5em;
+  }
+  main.Checkout div.Checkout-Step .Field_type_select label {
+    top: -6px;
+    font-size: 0.8em;
+  }
+  main.Checkout div.Checkout-Step .CheckoutGuestForm .Field_type_checkbox label.Field-Label {
+    font-size: 0.8em;
+    top: 7px;
+  }
+  main.Checkout div.Checkout-Step form#BILLING_STEP .Field_type_checkbox label.Field-Label {
+    top: -7px;
+  }
+}

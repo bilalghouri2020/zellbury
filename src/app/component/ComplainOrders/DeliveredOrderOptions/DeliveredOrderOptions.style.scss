@@ -1,0 +1,35 @@
+.buttonsSec{
+    margin-bottom: 13px;
+    // text-align: center;
+    margin-top: 15px;  
+    @include mobile{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.buttonsSec .optionsBtn {
+    border-radius: 6px;
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    width: 350px;
+    text-transform: none;
+    @include mobile{
+        padding: 25px 20px;
+        font-size: 16px;
+    }
+}
+
+.buttonsSec .optionsBtn:hover, .buttonsSec .optionsBtn:active {
+    background-color: #c1bcbc;
+    color: #000;
+}
+
+.orderOptCenteredSec{
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+}

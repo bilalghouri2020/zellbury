@@ -1,0 +1,270 @@
+for Local build
+clear
+cd /var/www/html/Zellbury/magento2/public_html/app/design/frontend/Scandiweb/pwa
+sudo npm run build
+
+cd /var/www/html/Zellbury/magento2/public_html/;
+sudo php bin/magento s:up
+sudo php bin/magento s:s:d -f
+sudo php bin/magento c:f
+sudo php bin/magento c:c
+sudo chmod -R 777 pub var generated
+
+
+for dev and live build
+
+For Windows
+
+- Open WinSCP
+- Click on button Open in putty beside synchronization
+
+zulqarnain@zulqarnain-pc:/var/www/html/Live Terminal configuraion // Go to this path to connect server and use Live Terminal Configuration in string
+
+ssh -i newstaging.pem ubuntu@dev.zellbury.com // To Connect dev server command
+
+ssh -i zellbury_live_key.key ubuntu@zellbury.com // To Connect live server
+
+
+clear
+
+sudo bash
+cd /home/zellbury/www/public_html/app/design/frontend/Scandiweb/pwa/src
+npm run build
+cd /home/zellbury/www/public_html/;
+sudo php bin/magento maintenance:enable
+sudo php bin/magento s:up
+sudo php bin/magento s:s:d -f
+sudo php bin/magento c:f
+sudo php bin/magento c:c
+sudo chmod -R 777 pub/ var/ generated/
+sudo php bin/magento maintenance:disable
+
+
+for dev:,...................
+sudo bash
+cd /home/zellbury/www/public_html/app/design/frontend/Scandiweb/pwa/src
+npm run build
+cd /home/zellbury/www/public_html/;
+sudo php bin/magento s:up
+sudo php bin/magento s:s:d -f
+sudo php bin/magento c:f
+sudo php bin/magento c:c
+sudo chmod -R 777 pub/ var/ generated/
+
+
+
+https://docs.google.com/spreadsheets/d/15aaksnvhbbFu027XuguQn4GfZ811kL1MtmB6HllFtFw/edit?usp=sharing
+
+/app/design/frontend/Scandiweb/pwa/src/app
+
+
+media path
+/home/zellbury/www/public_html/pub/media/demo
+
+
+command to connect dev terminal 
+ssh -i newstaging.pem ubuntu@dev.zellbury.com
+
+
+CREATE USER 'zellbury'@'127.0.0.1' IDENTIFIED WITH authentication_plugin BY 'Matech123';
+
+
+
+mysql password
+matech123
+dev-server-ip = 157.175.35.183
+
+zip -r app_03_apr_2021.zip app/
+
+local path
+var/www/html/Zellbury/magento2/public_html/app/design/frontend/Scandiweb/pwa/src/
+dev and live path
+/home/zellbury/www/public_html/app/design/frontend/Scandiweb/pwa/src
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+sudo service redis_6379 start
+sudo /etc/init.d/redis restart
+redis-cli flushall
+sudo service apache2 stop
+
+
+
+
+sudo fuser -k 80/tcp
+sudo bin/magento setup:di:compile
+sudo /etc/init.d/nginx stop;
+sudo /etc/init.d/nginx start;
+sudo systemctl restart nginx
+
+sudo chmod -R 777 /home/zellbury/www/public_html/var/cache/
+
+sudo ssh -i zellbury_staging.key ubuntu@dev.zellbury.com
+waqas.ahmed
+Architect
+
+{{widget type="Magento\Cms\Block\Widget\Block" template="widget/static_block/default.phtml" block_id="30"}}
+
+openssl 
+.csr .key
+install lets incript
+.crt
+cd /var/www/html/Zellbury/magento2/public_html/app/design/frontend/Scandiweb/pwa
+sudo npm run build
+
+sudo certbot --apache -d dev.zellbury.com -d www.dev.zellbury.com
+
+new dev istanse
+host : 157.175.35.183
+u: ubuntu
+
+
+
+
+
+
+mysql -unewuser -ppassword zellbury < zellbury_megento-12122020.sql // upload database backup
+sudo apt install php7.3-bcmath // then reastart server
+
+cd /home/zellbury/www/public_html/;
+php bin/magento maintenance:enable
+
+cd /home/zellbury/www/public_html/;
+php bin/magento maintenance:disable
+
+php bin/magento deploy:mode:set developer
+php bin/magento maintenance:disable
+php bin/magento maintenance:enable
+php bin/magento deploy:mode:set production
+php bin/magento deploy:mode:show
+php bin/magento maintenance:disable
+            
+            
+dev_database
+mysql --host=zellbury-staging.cpfvpviqtazy.me-south-1.rds.amazonaws.com --user='zellbury' --password='Techno@786' --port='3306' --database='zellbury_megento';
+
+local_database
+mysql --host=localhost --user='newuser' --password='password' --port='3306' --database='zellbury';
+
+dev_otp table name
+customer_otp
+            
+            ------------------------------
+           not Zulqarnain? click here
+           Need to redirect to checkout page after login from cart page
+           auto detect
+           in mini cart, show continues as Zulqarnain
+           button enable or disable on 4 dgit otp code
+           
+           
+           
+           
+           php bin/magento admin:user:create --admin-user=zellbury_dev --admin-password=Matech1234 --admin-email=zulqarnain.jalil@matechco.com --admin-firstname=Matech --admin-lastname=Co
+
+           
+           
+           
+           
+           
+/var/www/html/Zellbury/magento2/public_html/app/design/frontend/Scandiweb/pwa/Magento_Theme/templates/root.phtml
+/var/view_preprocessed/pub/static/app/design/frontend/Scandiweb/pwa/Magento_Theme/templates/root.phtml     
+/var/www/html/Zellbury/magento2/public_html/app/design/frontend/Scandiweb/pwa/src/public/ze.index.production.phtml
+           
+           
+           
+           
+           
+session.cache_expire = 259200
+session.gc_maxlifetime = 259200
+session.cookie_lifetime = 259200
+
+
+chrome
+createdAt: 1609501719155
+data: "pn1swy6z0uwh2uwltesw807kka4g4hiw"
+expiration: 14256000
+
+firefox
+createdAt:1609501815579
+data:"812s575gp9pv0ebtqtc2z8c3u8dn9od0"
+expiration:14256000
+
+
+
+
+
+
+
+
+
+
+
+
+
+ID – ecom@zellbury.com
+URL – https://console.aws.amazon.com
+Pass – zullBury2021#
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+0: " 'Product Related"
+1: "Order Update / Tracking"
+2: "Order Cancellation"
+3: "Place an Order"
+4: "Website Issue"
+5: "Price"
+6: "Missing Item"
+7: "Wrong Item"
+8: "Fabric Issue"
+9: "Store Related"
+10: "Loyalty Credits"
+11: "Wholesale"
+12: "Rider Payments Complaints"
+13: "OTP Not Received"
+14: "Delivery Charges"
+15: "Reverse Pickup"
+16: "Order Modification"
+17: "Damaged"
+18: "Incomplete Information"
+19: "Payment Related"
+20: "Positive Feedback"
+21: "Marketing"
+22: "Human Resource"
+23: "Spam"
+24: "Service Task"
+25: "Incomplete order"
+26: "Didn’t receive the order"
+27: "Overcharged"
+28: "Cancellation"
+29: "IG - Change to actual'"
+length: 30

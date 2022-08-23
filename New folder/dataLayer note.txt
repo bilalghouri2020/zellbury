@@ -1,0 +1,12 @@
+view_item (on product page load) (done)
+add_to_cart (on add to cart button) (done)
+view_cart (on cart page load) (done)
+remove_from_cart (on delete button) (done)
+begin_checkout (on checkout page loaded) (done)
+add_shipping_info ( on page step = billing) (done)
+
+add_payment_info (complete order) (done)
+purchase (on complete order) (done)
+
+
+

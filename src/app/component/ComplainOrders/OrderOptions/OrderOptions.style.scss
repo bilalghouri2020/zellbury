@@ -1,0 +1,34 @@
+.roundedButtonsSec{
+    margin-bottom: 13px;
+    // text-align: center;
+    margin-top: 15px;
+    @include mobile{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.roundedButtonsSec .optionsBtn {
+    border-radius: 35px;
+    padding: 10px 20px;
+    background-color: #ede8e8;
+    font-size: 12px;
+    text-transform: inherit;
+    color: #000;
+    border: none;
+    width: 300px;
+    @include mobile{
+        padding: 25px 20px;
+        font-size: 16px;
+    }
+}
+
+.roundedButtonsSec .optionsBtn:hover, .roundedButtonsSec .optionsBtn:active {
+    background-color: #d1caca;
+    color: #000;
+}
+
+.centeredSec{
+    text-align: center;
+    background-color: #fff;
+}

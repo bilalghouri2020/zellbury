@@ -1,0 +1,687 @@
+/**
+ * ScandiPWA - Progressive Web App for Magento
+ *
+ * Copyright © Scandiweb, Inc. All rights reserved.
+ * See LICENSE for license details.
+ *
+ * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
+ * @package scandipwa/base-theme
+ * @link https://github.com/scandipwa/base-theme
+ */
+
+ :root {
+    --checkbox-label-color: #0a0a0a;
+    --my-account-input-label-color: rgba(10, 10, 10, .59);
+    --my-account-overlay-width: 400px;
+    --my-account-overlay-border-width: 1px;
+}
+
+.MyAccountOverlay {
+    --overlay-background: var(--overlay-content-background);
+
+    justify-self: flex-end;
+    grid-column: 3;
+    right: 0;
+    padding-top: 1rem;
+
+    @include desktop {
+      position: fixed !important;
+      top: 0;
+      padding: 0;
+      left: 0;
+      background: rgba(0,0,0,.8) !important;
+      border: none !important;
+      width: 100%;
+      height: 100% !important;
+      overflow: auto !important;
+    }
+
+    @include before-desktop {
+        height: auto;
+        padding-bottom: 0;
+        top: 0;
+        position: relative;
+    }
+
+    &_isVisible {
+        @include desktop {
+            border: var(--my-account-overlay-border-width) solid var(--overlay-desktop-border-color);
+        }
+    }
+
+    &::before {
+        @include desktop {
+            content: '';
+          display: none;
+            position: absolute;
+            top: -9px;
+            right: 49px;
+            height: 15px;
+            width: 15px;
+            transform: rotate(45deg);
+            background-color: var(--overlay-background);
+            border: {
+                top: var(--my-account-overlay-border-width) solid var(--overlay-desktop-border-color);
+                left: var(--my-account-overlay-border-width) solid var(--overlay-desktop-border-color);
+            }
+        }
+    }
+
+    button {
+        width: 100%;
+        margin-top: .5rem;
+    }
+
+    input {
+        width: 100%;
+    }
+
+    &-Heading {
+        font-size: 18px;
+        font-weight: bold;
+        padding: 0 1rem 1rem;
+
+        @include before-desktop {
+            display: none;
+        }
+    }
+
+    &-Notification {
+        background-color: var(--primary-dark-color);
+        padding: 2rem;
+    }
+
+    &-Navigation {
+        li {
+            margin: 0;
+            padding: 0;
+
+            &::before {
+                content: none;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            a {
+                display: block;
+            }
+        }
+
+        a,
+        button {
+            width: 100%;
+            text-align: left;
+            padding: 1rem 2rem;
+            font-size: 1.2rem;
+
+            &:hover {
+                background-color: var(--color-cart-light);
+                text-decoration: none;
+            }
+
+            &:focus {
+                text-decoration: none;
+            }
+
+            @include desktop {
+                padding: .5rem;
+            }
+        }
+        @include desktop {
+            padding: .5rem;
+        }
+    }
+
+    &-Action form,
+    &-Additional {
+        padding: {
+            top: 0;
+            left: 3rem;
+            right: 3rem;
+            bottom: 3rem;
+        };
+    }
+
+    &-Action {
+        display: grid;
+        grid-template-rows: max-content 1fr;
+        
+        &_state {
+            &_createAccount {
+                h4 {
+                    padding-right: 1rem;
+                    display: inline;
+                }
+
+                h3 {
+                    margin-bottom: 1rem;
+                }
+
+                .Field {
+                    margin-top: .7rem;
+                }
+                @include before-desktop {
+                    padding-top: 1rem;
+                }
+            }
+
+            &_forgotPassword {
+                h4 {
+                    width: initial;
+                }
+
+                button {
+                    font-weight: bold;
+                }
+            }
+
+            &_signIn {
+                h4 {
+                    text-align: center;
+                }
+            }
+
+            &_loggedIn {
+                .MyAccountOverlay-Heading {
+                    @include desktop {
+                        display: none;
+                    }
+                }
+                @include desktop {
+                    width: 180px;
+                    padding: 0;
+                }
+            }
+        }
+
+        h4 {
+            font-size: 1.15rem;
+            font-weight: bold;
+            margin-bottom: .5rem;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        @include desktop {
+          width: calc(var(--my-account-overlay-width) - (var(--my-account-overlay-border-width) * 2));
+          //padding: 2rem 2rem;
+          margin: 5% auto;
+        }
+    }
+
+    &-Additional {
+        padding-top: 5.5rem;
+
+        section {
+            display: flex;
+
+            padding-top: 20px;
+
+            &:first-of-type {
+                padding-top: 0;
+            }
+        }
+
+        &_state {
+            &_createAccount {
+                padding-top: 2rem;
+
+                @include before-desktop {
+                    display: none;
+                }
+
+                h4 {
+                    margin: 0;
+                    padding-right: 0;
+                }
+
+                button {
+                    width: initial;
+                    height: initial;
+                    margin: 0;
+                    padding-left: .4rem;
+                }
+            }
+
+            &_signIn {
+                section {
+                    flex-direction: column;
+                }
+            }
+
+            &_confirmEmail {
+                padding-top: 0;
+            }
+
+            &_forgotPassword {
+                padding-top: 2.8rem;
+                padding-left: 2.1rem;
+
+                @include before-desktop {
+                    display: none;
+                }
+
+                section {
+                    display: flex;
+
+                    button {
+                        width: initial;
+                        margin-top: 0;
+                        padding-left: 5px;
+                        font-weight: 600;
+                    }
+
+                    h4 {
+                        margin-bottom: 0;
+                        align-self: center;
+                    }
+
+                    &:last-of-type {
+                        padding-top: .1rem;
+                    }
+                }
+            }
+
+            &_forgotPasswordSuccess {
+                padding-top: 0;
+
+                h4 {
+                    font-size: 1rem;
+                    line-height: 1.5;
+                    padding-bottom: 1.4rem;
+                    font-weight: normal;
+                    letter-spacing: normal;
+                }
+            }
+        }
+    }
+
+    &-CloseButton {
+      position: absolute;
+      right: 0;
+      margin: 10px;
+      width: 20px !important;
+      height: 20px;
+
+        &::before,
+        &::after {
+            background-color: var(--header-color);
+            content: '';
+            height: 20px;
+            position: absolute;
+          right: unset;
+          top: 0;
+            transform-origin: 50% 50%;
+            width: 1px;
+            z-index: 1;
+        }
+
+        &::before {
+            transform: rotate(-45deg);
+        }
+
+        &::after {
+            transform: rotate(45deg);
+        }
+    }
+
+    &-ForgotPasswordButton {
+        @include desktop {
+            display: none;
+        }
+    }
+
+    &-Buttons {
+        margin-top: .5rem;
+    }
+
+    &-Button {
+        &_likeLink {
+            font-size: .95rem;
+            margin-top: 1.2rem;
+        }
+    }
+
+    &-Checkbox {
+        display: flex;
+        flex-direction: row-reverse;
+        right: 10px;
+        justify-content: flex-end;
+        align-items: center;
+        margin-bottom: 2rem;
+      margin-top: 2rem !important;
+
+        > label:first-of-type {
+            color: var(--checkbox-label-color);
+            font-size: .8rem;
+            font-weight: 500;
+            padding-bottom: 0;
+            margin-left: .8rem;
+        }
+
+        > label:last-of-type {
+            /*width: 1.1rem;*/
+            height: 1.1rem;
+
+            &::after {
+                left: .1rem;
+                top: .4rem;
+                width: .15rem;
+                height: .15rem;
+            }
+        }
+
+        input {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            left: 20px;
+        }
+    }
+    @include after-mobile {
+        position: fixed;
+        top: 0;
+        padding: 0;
+        left: 0;
+        background: rgba(0,0,0,.8);
+        border: none;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+      }
+}
+
+.MyAccountOverlay-SocialOr {
+  text-align: center;
+  padding: 0 1rem;
+}
+.MyAccountOverlay-SocialLogins {
+  padding: 0 1rem;
+}
+.MyAccountOverlay button.kep-login-facebook {
+  text-transform: none !important;
+  background-color: #1877f2 !important;
+  border: none !important;
+  padding: 16px 13px 10px 13px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  border-radius: 2px !important;
+}
+.MyAccountOverlay button.kep-login-facebook svg {
+  vertical-align: text-top !important;
+  font-size: 1.5em !important;
+  margin-right: 10px !important;
+  top: -3px !important;
+}
+.MyAccountOverlay button.kep-login-google {
+  padding: 2px !important;
+  font-size: 15px !important;
+  margin-top: 15px !important;
+  justify-content: center !important;
+}
+.Field.Field_type_hidden {
+  display: none;
+}
+.MyAccountOverlay-FacebookImage, .MyAccountOverlay-GoogleImage {
+  max-width: 200px;
+}
+
+.MyAccountOverlay-Action .Field
+{
+  margin: 15px 0;
+  position: relative;
+}
+.MyAccountOverlay-Action .Field input
+{
+  position: relative;
+//   z-index: 2000;
+  transition: border-color .25s ease-in-out;
+  background-color: transparent;
+}
+.MyAccountOverlay-Action .Field label
+{
+  position: absolute;
+  top: 0;
+  left: 0;
+  user-select: none;
+//   z-index: 1500;
+  font-weight: 400;
+}
+.MyAccountOverlay-Action .Field input::placeholder
+{
+  color: transparent;
+}
+.MyAccountOverlay-Action .Field input + label
+{
+  position: absolute;
+  top: 1em;
+  left: .7em;
+  display: inline-block;
+  padding: 0 .5em;
+  transition: transform .25s, opacity .25s, padding .25s ease-in-out;
+  transform-origin: 0 0;
+}
+.MyAccountOverlay-Action .Field input:focus + label,
+.MyAccountOverlay-Action .Field input:not(:placeholder-shown) + label
+{
+//   z-index: 2500;
+  transform: translate(0, -2em) scale(.9);
+  color: rgba(0, 0, 0, .75);
+  background-color: #fff;
+}
+
+.MyAccountOverlay-Action .Field_type_checkbox label {
+  margin: 10px 0;
+  left: 20px;
+}
+.MyAccountOverlay-Action .Field_type_checkbox label.Field-Label {
+  margin: 0;
+  left: 45px;
+}
+
+
+// Add New Styling
+.secured_Wrap {
+    display: flex;
+align-items: center;
+justify-content: center;
+margin: 0px;
+background: #F2F5F8;
+padding: 5px 0px;
+margin-bottom: 20px;
+}
+.secured_Wrap .secure-img {
+    display: inline-block;
+    max-width: 20px;
+margin-right: 5px;
+}
+.secured_Wrap label {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 100%;
+    font-weight: bold;
+}
+.ringer-img,
+.success-img{
+    width: auto;
+    margin: 0 auto 25px;
+    max-width: 60px;
+}
+.txt-center{
+    text-align: center;
+    margin-bottom: 10px !important;
+}
+.MyAccountOverlay-Action .promo-img {
+    margin-bottom: 20px;
+}
+.MyAccountOverlay-Action .Field.Field_type_otp {
+    width: 100%;
+}
+.MyAccountOverlay-Action .Field.Field_type_tel_masks {
+    width: calc(100% - 70px);
+}
+
+.MyAccountOverlay-Action .Field.Field_type_tel {
+    width: 69px;
+    pointer-events: none;
+}
+.MyAccountOverlay-Action .Field.Field_type_tel_masks label {
+    left: -40px;
+}
+    .MyAccountOverlay-Action .Field {
+        width: 100%;
+        display: inline-block;
+    }
+    .MyAccountOverlay-Action .Field input+label {
+        top: 1.3em;
+
+    }
+    .Header_name_customer_account_page {
+        display: none
+    }
+    .wrap-verify {
+        background-color: #F2F5F8;
+        margin-top: 15px;
+    }
+    .MyAccountOverlay-Heading.txt-center {
+        margin: 0;
+        padding: 0;
+    }
+    .wrap-verify .MyAccountOverlay-Heading.txt-center {
+        display: block !important;
+    }
+    #countryCode{
+        width: 70px;
+    }
+    .MyAccountOverlay-Action .Field  #otp{
+        text-align: center;
+    }
+    // .MyAccountOverlay-Action .Field #phone:focus {
+    //     border-color: #FF3665;
+    // }
+    
+    .MyAccountOverlay-Buttons {
+        width: 100%;
+    }
+    .CheckoutSuccess-OtpResend {
+        display: flex;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .MyAccountOverlay-Action .CheckoutSuccess-OtpResendTimer {
+        text-align: center;
+    }
+    .MyAccountOverlay-Action .CheckoutSuccess-OtpResendBtn {
+        text-align: left;
+    }
+    .full_Name_Field fieldset .Field.Field_type_text {
+        width: 100%;
+    }
+    .full_Name_Field fieldset {
+        width: 100%;
+    }
+    .MyAccount form.Form .MyAccountOverlay-Legend {
+        width: 100%;
+    }
+    .form-wrap-main {
+        text-align: center;
+       }
+
+
+    @media (max-width:400px) {
+        .MyAccountOverlay-Action .Field input + label {
+          font-size: 0.8em;
+          top: 1.5em;
+        }
+        .MyAccountOverlay-Action .Field_type_checkbox label.Field-Label {
+          font-size: 0.8em;
+          top: 7px;
+        }
+      }
+      .MyAccountOverlay-Action form {
+        display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    }
+    
+    @media (max-width: 767px) {
+        .MyAccount {
+            height: 100vh;
+            display: inline-block;
+            width: 100%;
+            padding-bottom: 50px;
+            margin: 0 !important;
+          }
+          .secured_Wrap {
+            margin-bottom: 20px;
+          }
+          .MyAccountOverlay, .MyAccountOverlay-Action_state_createAccount {
+            padding-top: 0px;
+          }
+            .MyAccount .Overlay {
+            height: 100%;
+            }
+            .MyAccount .Overlay .MyAccountOverlay-Action {
+            display: inline-block;
+            text-align: center;
+            height: 100%;
+            }
+            .MyAccount .Overlay .MyAccountOverlay-Action .wrap-verify {
+                margin: 0;
+                display: flex;
+                align-items: flex-end;
+                justify-content: center;
+                height: 100%;
+                max-height: calc(100% - 415px);
+                padding-bottom: 0;
+                background: transparent;
+            }
+            .form-wrap-main {
+                min-height: 365px;
+            }
+            .MyAccount .Overlay .MyAccountOverlay-Action .wrap-verify > div > div p {
+                max-width: 280px;
+                margin: 0 auto;
+            }
+            .MyAccount .Overlay .MyAccountOverlay-Action .wrap-verify > div {
+                background-color: #F2F5F8;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100%;
+              max-height: 170px;
+          }
+          .MyAccount .Overlay .MyAccountOverlay-Action .wrap-verify > div > div {
+                width: 100%;
+          }
+    }
+    .Field-Message{
+        white-space: break-spaces;
+        text-align: center;
+    }
+    .CheckoutSuccess-OtpResendBtn{
+        margin-top: 0rem !important;
+    }
+    .MyAccount .Overlay .MyAccountOverlay-Action {
+        width: 100%;
+    }
+    @media(max-height: 568px) {
+        .MyAccount .Overlay .MyAccountOverlay-Action .wrap-verify {
+        max-height: 220px;
+        padding-bottom: 50px;
+        }
+        .MyAccount .Overlay .MyAccountOverlay-Action .wrap-verify>div {
+        padding: 20px 0px;
+        }
+    }
+    @media (max-width: 480px) {
+        .MyAccount{
+            height: 82vh;
+            padding-bottom: 0;
+        } 
+    }

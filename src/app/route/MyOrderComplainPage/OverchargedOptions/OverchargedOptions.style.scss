@@ -1,0 +1,52 @@
+.overchargedButtonsSec{
+    margin-bottom: 13px;
+    // text-align: center;
+    margin-top: 15px;
+    @include mobile{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.overchargedButtonsSec .optionsBtnOver {
+    border-radius: 6px;
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    width: 350px;
+    text-transform: none;
+    @include mobile{
+        padding: 25px 20px;
+        font-size: 16px;
+    }
+}
+
+.overchargedSection{
+    margin-top: 30px;
+    @include mobile{
+        margin-top: 90px;
+    }
+}
+
+.overchargedButtonsSec .optionsBtnOver:hover, .overchargedButtonsSec .optionsBtnOver:active {
+    background-color: #c1bcbc;
+    color: #000;
+}
+
+.orderOptCenteredSecOvercharged{
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-bottom: 80px;
+}
+
+.overchargedSection h4{
+    text-align: center;
+    font-size: 17px;
+    padding: 0 25px;
+    font-weight: normal;
+    line-height: 30px;
+    margin-bottom: 25px;
+}

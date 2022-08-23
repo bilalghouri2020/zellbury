@@ -1,0 +1,39 @@
+.scanTopSec{
+    text-align: center;
+    @include mobile {
+        margin-top: 90px;
+    }
+    
+}
+
+.scanTopSec h3{
+    font-size: 2rem;
+    margin-bottom: 30px;
+    // @include mobile{
+    //     display: none;
+    // }
+}
+
+.scanTopSec h4{
+    padding: 0px 20px;
+    line-height: 26px;
+}
+
+.scanSection{
+    width: 50%;
+    margin: 0 auto;
+    @include mobile{
+        width: 100%;
+        margin: 0;
+    }
+}
+.locationDisable {
+    color: #DC6D6D;
+    font-weight: 600;
+    cursor: pointer;
+}
+p.deliveryLocationPara{
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,130 @@
+:root {
+    --my-storeslist-content-background: #{$white};
+    @include after-mobile {
+        --my-storeslist-background: var(--secondary-base-color);
+    }
+}
+
+.MyStoresList {
+    background: var(--my-storeslist-background);
+
+    &-Wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+        grid-column-gap: 2rem;
+        grid-row-gap: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        @include mobile {
+            padding: 0;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &-TabContent {
+        background: var(--my-storeslist-content-background);
+        padding: 1rem;
+        padding-bottom: 76px;
+        @include after-mobile {
+            grid-row: span 2;
+            padding: 2rem;
+        }
+    }
+
+    &-Heading {
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: none;
+        margin: 0 0 2rem;
+
+        @include mobile {
+            display: none;
+        }
+    }
+
+    &-Button,
+    button {
+        @include mobile {
+            width: 100%;
+        }
+    }
+}
+
+.buttonsSec{
+    margin-bottom: 13px;
+    // text-align: center;
+    margin-top: 15px;
+    @include mobile{
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
+}
+
+.buttonsSec .optionsBtn {
+    border-radius: 20px;
+    padding: 10px 20px;
+    background-color: #fff;
+    font-size: 10px;
+    color: #000;
+    border: none;
+    width: 200px;
+    text-transform: none;
+    @include mobile{
+        padding: 25px 20px;
+        font-size: 16px;
+    }
+}
+
+.buttonsSec .optionsBtn:hover, .buttonsSec .optionsBtn:active {
+    background-color: #c1bcbc;
+    color: #000;
+}
+
+.orderOptCenteredSec{
+    text-align: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.headSection{
+    background-color: #b1aaaa;
+    padding: 10px;
+    margin-top: 30px;
+}
+
+.headSection p{
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.contentSec li{
+    padding: 8px 20px;
+}
+
+.contentSec li.bgClass{
+    background: #f1eeee;
+}
+
+.contentSec li::before{
+    content: '';
+    padding-right: 0em;
+}
+
+.listingSection{
+    display: flex;
+    align-items: center;
+}
+
+.listingSection .leftSection{
+    flex: 1;
+}
+.iconSection{
+    padding-right: 10px;
+}
+.storeListBtn{
+    width: 100%;
+    text-align: inherit;
+}

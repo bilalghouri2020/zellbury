@@ -1,0 +1,100 @@
+:root {
+    --my-orderslisting-content-background: #{$white};
+    // .customHeader{
+    //     display: block;
+    //     min-height: 45px;
+    //     padding: 10px;
+    // }
+    @include after-mobile {
+        --my-orderslisting-background: var(--secondary-base-color);
+        margin-top: 90px;
+        // .customHeader{
+        //     display: none;
+        // }
+    }
+    
+}
+
+button.complainTabs{
+    width: auto;
+    @include mobile{
+        width: 50%
+    }
+}
+
+.MuiTab-textColorInherit.Mui-selected{
+    background-color: #d1cbcb !important;
+}
+
+.MuiTab-textColorInherit{
+    background-color: #e9e2e2 !important;
+}
+
+.MyOrdersListing {
+    background: var(--my-orderslisting-background);
+
+    &-Wrapper {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr;
+        grid-column-gap: 2rem;
+        grid-row-gap: 0;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        @include mobile {
+            padding: 0;
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &-TabContent {
+        background: var(--my-orderslisting-content-background);
+        padding: 1rem;
+        padding-bottom: 76px;
+        @include after-mobile {
+            grid-row: span 2;
+            padding: 2rem;
+        }
+    }
+
+    &-Heading {
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: none;
+        margin: 0 0 2rem;
+
+        @include mobile {
+            // display: none;
+        }
+    }
+
+    // &-Button,
+    // button {
+    //     @include mobile {
+    //         width: 100%;
+    //     }
+    // }
+}
+
+.orderListingSection button.Header-Button.Header-Button_type_back {
+    opacity: 0;
+    padding: 0;
+    width: 0;
+    pointer-events: all;
+    overflow: hidden;
+
+    @include mobile {
+        opacity: 1;
+        padding: 7.5px;
+        width: 35px;
+        pointer-events: all;
+        overflow: visible;
+    }
+}
+.orderListingSection{
+    margin-top: 20px;
+    @include mobile {
+        margin-top: 80px;
+    }
+}
